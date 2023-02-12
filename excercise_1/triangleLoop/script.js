@@ -1,3 +1,5 @@
+//Write a loop that makes seven calls to console.log to output the following
+
 let str = '#';
 let counter = 0;
 
