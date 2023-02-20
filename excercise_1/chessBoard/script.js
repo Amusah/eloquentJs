@@ -1,11 +1,15 @@
+console.log('/*********SOLVING PROBLEM USING FOR LOOP***********/');
+console.log('');
+
+/*************WITH FOR LOOP***********/ 
 let chess = '';
-let grid = 8;
+let gridSize = prompt('Enter grid size');
 //let row = 1;
 
-for(let row = 1; row <= grid; row++){
-    for(let column = 1; column <= grid; column++){
+for(let row = 1; row <= gridSize; row++){
+    for(let column = 1; column <= gridSize; column++){
         if((column + row) % 2 === 0){
-            chess += '.';
+            chess += ' ';
         }else{
             chess += '#';
         }
@@ -13,17 +17,28 @@ for(let row = 1; row <= grid; row++){
     chess += '\n';
 }
 console.log(chess);
+console.log('');
 
-/*************WITH WHILE LOOPS***********/ 
+
+console.log('/*********SOLVING PROBLEM USING WHILE LOOP***********/');
+console.log('');
+
+/*************WITH WHILE LOOP***********/ 
 let chessBoard = '';
-let gridSize = 8;
+//let gridSize = 8;
 let gridRow = 1;
 
 while(gridRow <= gridSize){
     let gridColumn = 1;
-    if((gridColumn + gridRow) % 2 === 0){
-        chessBoard += ' ';
-    }else{
-
+    while(gridColumn <= gridSize){
+        if((gridColumn + gridRow) % 2 === 0){
+            chessBoard += ' ';
+        }else{
+            chessBoard += '*';
+        }
+        gridColumn ++;
     }
+    chessBoard += '\n';
+    gridRow ++;
 }
+console.log(chessBoard);
