@@ -20,7 +20,7 @@ console.log(chess);
 console.log('');
 
 
-console.log('/*********SOLVING PROBLEM USING WHILE LOOP***********/');
+console.log('/*********SOLVING SAME PROBLEM USING WHILE LOOP***********/');
 console.log('');
 
 /*************SAME ALGORITHM WITH WHILE LOOP***********/ 
