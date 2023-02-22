@@ -1,7 +1,7 @@
 console.log('/*********SOLVING PROBLEM USING FOR LOOP***********/');
 console.log('');
 
-/*************WITH FOR LOOP***********/ 
+/*************ALGORITHM WITH FOR LOOP***********/ 
 let chess = '';
 let gridSize = prompt('Enter grid size');
 //let row = 1;
@@ -23,7 +23,7 @@ console.log('');
 console.log('/*********SOLVING PROBLEM USING WHILE LOOP***********/');
 console.log('');
 
-/*************WITH WHILE LOOP***********/ 
+/*************SAME ALGORITHM WITH WHILE LOOP***********/ 
 let chessBoard = '';
 //let gridSize = 8;
 let gridRow = 1;
