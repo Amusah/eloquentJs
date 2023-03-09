@@ -3,9 +3,9 @@
 // define function isEven()
 let isEven = num => {
     // return true when num equals 0
-    if(num === 0) return true
+    if(num === 0) return true;
     //return false when num equals 1
-    else if(num === 1) return false
+    else if(num === 1) return false;
     // while number is > 0
     else if(num > 0) return isEven(num - 2);
     // acceptin -N
