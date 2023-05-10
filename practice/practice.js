@@ -1589,3 +1589,32 @@ function findDeadAverage(array){
   return total / count;
 }
 console.log(Math.round(findDeadAverage(SCRIPTS)));
+
+//Strings and character codes
+console.log('//Strings and character codes');
+function characterScript(code){
+  for(let script of SCRIPTS){
+    if (script.ranges.some(([from, to]) =>  {
+      return code >= from && code < to;
+    })) {
+      return script;
+    }
+  }
+  return null;
+}
+console.log(characterScript(121));
+console.log(characterScript(1143));
+
+console.log('// code units and characters');
+// two emoji characters, horse and shoe
+let horseShoe = '🐴👞';
+console.log(horseShoe.length);
+console.log(horseShoe[1]);
+console.log(horseShoe.charCodeAt(0));
+console.log(horseShoe.codePointAt(0));
+
+// looping through a string of emojis
+let roseDragon = '🌹🐉';
+for(let emoji of roseDragon){
+  console.log(emoji);
+}
