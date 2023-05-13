@@ -1724,3 +1724,30 @@ console.log(Object.getPrototypeOf([]) == Array.prototype);
 
 console.log(' ');
 console.log('//creating objects with specific prototypes using Object.create()');
+
+let protoRabbit = {
+  speak(line){
+    console.log(`The ${this.type} rabbit says '${line}'`);
+  }
+};
+let killerRabbit = Object.create(protoRabbit);
+killerRabbit.type = 'killer';
+killerRabbit.speak('SKREEE!');
+
+console.log(' ')
+console.log('// Classes');
+
+function makeRabbit(type){
+  let rabbit = Object.create(protoRabbit);
+  rabbit.type = type;
+  return rabbit;
+}
+let rabb = new makeRabbit('White');
+rabb.speak('Hey');
+
+function Rabbit(type){
+  this.type = type;
+}
+Rabbit.prototype.speak = function(line){
+  console.log(`The ${this.type} rabbit says '${line}'`);
+}
