@@ -1661,3 +1661,66 @@ function textScripts(text){
 }
 
 console.log(textScripts('school', 'the'));
+
+
+console.log(' ');
+console.log('/*************THE SECRET LIFE OF OBJECTS*************/');
+console.log(' ');
+//methods
+console.log('// methods');
+let rabbit = {};
+rabbit.speak = function(line){
+  console.log(`The rabbit says '${line}'`);
+}
+rabbit.speak('Hey there');
+
+function speak(line){
+  console.log(`The ${this.type} rabbit says '${line}'`);
+}
+let whiteRabbit = {
+  type: 'white',
+  speak
+};
+let hungryRabbit = {
+  type: 'hungry',
+  speak
+};
+whiteRabbit.speak('oh my ears and whiskers, ' + 'how late it\'s getting!');
+hungryRabbit.speak('I could use a carrot right now');
+/*
+  methods are object properties that hold function values
+  when a function is called as a method/in a method call
+  such as object.method(), the this keyword points to the 
+  object that called it or object the method was called on
+*/
+console.log(' ');
+console.log('//Explicitly calling the this keyword');
+/* 
+  we can use a function's call() method to explicitly 
+  invoke the this keyword.
+*/
+
+speak.call(hungryRabbit, 'Burp!');
+
+function normalize(){
+  console.log(this)
+  console.log(this.coords.map(n => n / this.length));
+}
+//normalize({coords: [0, 2, 3], length:5});
+normalize.call({coords: [0, 2, 3], length:5});
+
+console.log(' ');
+console.log('//Prototypes');
+
+let empty = {};
+console.log(empty.toString);
+console.log(empty.toString());
+
+console.log(Object.getPrototypeOf({}) == Object.prototype);
+console.log(Object.getPrototypeOf(Object.prototype));
+
+console.log(Object.getPrototypeOf(Math.max) == Function.prototype);
+console.log(Object.getPrototypeOf([]) == Array.prototype);
+
+console.log(' ');
+console.log('//creating objects with specific prototypes using Object.create()');

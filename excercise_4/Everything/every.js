@@ -14,4 +14,4 @@ console.log(every([1,2,4,16,4], n => n < 10));
 let everyFunction = (arr, test) => {
     return arr.every(n => test(n))
 }
-console.log(everyFunction([10,20,24,30,40], n => n % 2 === 0))
+console.log(everyFunction([10,20,24,30,40], n => n % 2 === 0));
