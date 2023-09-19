@@ -1690,16 +1690,18 @@ hungryRabbit.speak('I could use a carrot right now');
 /*
   methods are object properties that hold function values
   when a function is called as a method/in a method call
-  such as object.method(), the this keyword points to the 
-  object that called it or object the method was called on
+  such as objectName.method(), the this keyword points to the 
+  object that called it or the object the method was called on
 */
 console.log(' ');
 console.log('//Explicitly calling the this keyword');
 /* 
   we can use a function's call() method to explicitly 
-  invoke the this keyword.
+  invoke the this keyword. It takes the (this)--which 
+  is the intended object to be pointed at, as its first
+  argument.
 */
-
+//speak.call('this', 'Howdy');
 speak.call(hungryRabbit, 'Burp!');
 
 function normalize(){
@@ -1734,7 +1736,7 @@ let killerRabbit = Object.create(protoRabbit);
 killerRabbit.type = 'killer';
 killerRabbit.speak('SKREEE!');
 
-console.log(' ')
+console.log(' ');
 console.log('// Classes');
 
 function makeRabbit(type){
@@ -1748,6 +1750,51 @@ rabb.speak('Hey');
 function Rabbit(type){
   this.type = type;
 }
+// Adding a prototype that will be accessible by all instances
 Rabbit.prototype.speak = function(line){
   console.log(`The ${this.type} rabbit says '${line}'`);
 }
+let wiredRabbit = new Rabbit("wired");
+let blackRabbit = new Rabbit("black");
+//wiredRabbit.spek('bonku');
+// console.log(typeof whiteRabbit);
+// console.log(blackRabbit.type);
+console.log(Object.getPrototypeOf(wiredRabbit));
+console.log(Rabbit.prototype);
+console.log(Object.getPrototypeOf(wiredRabbit) === Rabbit.prototype); // true
+
+/*
+  By default, functions automatically get a property
+  known as prototype.
+*/
+console.log(Function.prototype);
+console.log(Object.getPrototypeOf(Rabbit));
+console.log(Object.getPrototypeOf(Rabbit) == Function.prototype);
+
+
+// Class Notation
+class Rabit {
+  constructor(type){
+    this.type = type;
+  }
+  speak(line){
+    console.log(`the ${this.type} rabbit says '${line}'`);
+  }
+  walk(){
+    console.log(`the ${this.type} rabbit is galloping.`);
+  }
+}
+let strangeRabit = new Rabit('strange');
+let blueRabit = new Rabit('blue');
+strangeRabit.speak('Hello');
+blueRabit.walk();
+
+/*
+  Proucing constructor function as a value....
+  this is done by using the 'class' keyword as an expression.
+  with this, omitting the class name is allowed.
+*/
+let object = new class{ 
+  getWord(){ return 'hello'}
+};
+console.log(object.getWord());
