@@ -1773,7 +1773,7 @@ console.log(Object.getPrototypeOf(Rabbit) == Function.prototype);
 
 
 // Class Notation
-class Rabit {
+class Rabit { // statement(declaration)
   constructor(type){
     this.type = type;
   }
@@ -1788,13 +1788,34 @@ let strangeRabit = new Rabit('strange');
 let blueRabit = new Rabit('blue');
 strangeRabit.speak('Hello');
 blueRabit.walk();
+console.log(Object.getPrototypeOf(strangeRabit) === Object.getPrototypeOf(blueRabit))
 
 /*
   Proucing constructor function as a value....
   this is done by using the 'class' keyword as an expression.
   with this, omitting the class name is allowed.
 */
-let object = new class{ 
-  getWord(){ return 'hello'}
+let object = new class{ // class expression(assigned)
+  getWord(){ return 'hello world'}
 };
 console.log(object.getWord());
+
+//Overriding Derived Properties
+console.log('//Overriding Derived Properties');
+Rabit.prototype.teeth = 'small';
+console.log(blueRabit.teeth);
+blueRabit.teeth = 'long and sharp';
+console.log(blueRabit.teeth);
+console.log(strangeRabit.teeth);
+
+// comparing toString() on Array.prototype and Object.prototype
+console.log('// comparing toString() on Array.prototype and Object.prototype');
+console.log(Array.prototype.toString == Object.prototype.toString);
+let ar = [1,2].toString()
+console.log(ar)
+console.log(typeof ar);
+
+//calling Object.prototype.toString with an array produces a different string
+console.log('// calling Object.prototype.toString with an array produces a different string');
+console.log(Object.prototype.toString.call([1, 2]));
+
