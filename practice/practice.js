@@ -1819,3 +1819,40 @@ console.log(typeof ar);
 console.log('// calling Object.prototype.toString with an array produces a different string');
 console.log(Object.prototype.toString.call([1, 2]));
 
+// MAPS
+console.log('// MAPS as data structure');
+let ages = {
+  Henry: 28,
+  Mavis: 32,
+  Josephine: 37
+};
+console.log(`Henry is ${ages['Henry']}`);
+console.log('is Maxi\'s age known?', 'Maxi' in ages);
+console.log('is toString\'s age known?', 'toString' in ages);
+
+/*
+  NB: toString was not listed in the ages object yet, it
+  returns true this is because it was derived from the
+  prototype object...just to know, a prototype is an object 
+  that is used as a fallback source of properties.
+
+  as such, it is not advisable to use plain objects as maps.
+  unless otherwise you create an object with no prototype
+  by passing null into Object.create(null);
+*/
+console.log('toString' in Object.create(null));
+console.log(' ');
+/*
+  map is recommended if you intend using keys of any type
+  unlike objects whose keys are strictly strings
+*/
+
+let staffAge = new Map();
+staffAge.set('Henry', 28);
+staffAge.set('Mavis', 32);
+staffAge.set('Josephine', 37);
+
+console.log(`Henry's age is ${staffAge.get('Henry')}`);
+console.log('is Maxi\'s age known?', staffAge.has('Maxi'));
+console.log('is toString\'s age known?', staffAge.has('toString'));
+// console.log(staffAge.Henry)
