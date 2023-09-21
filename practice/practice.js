@@ -1856,3 +1856,24 @@ console.log(`Henry's age is ${staffAge.get('Henry')}`);
 console.log('is Maxi\'s age known?', staffAge.has('Maxi'));
 console.log('is toString\'s age known?', staffAge.has('toString'));
 // console.log(staffAge.Henry)
+console.log('')
+// hasOwnProperty()
+console.log('// hasOwnProperty()');
+
+console.log({x: 1}.hasOwnProperty('x'));
+console.log({x: 1}.hasOwnProperty('toString'));
+
+console.log(' ');
+// Polymorphism
+console.log('// Polymorphism');
+/*
+  The String() function when called on an object, calls
+  the toString() method of that object - 
+  (exists in prototype by default) to try to create a
+  useful string but sometimes turns out as [object]
+*/
+Rabit.prototype.toString = function(){
+  console.log(this)
+  return `a ${this.type} rabbit`;
+};
+console.log(String(blueRabit));
