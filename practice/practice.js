@@ -1870,10 +1870,66 @@ console.log('// Polymorphism');
   The String() function when called on an object, calls
   the toString() method of that object - 
   (exists in prototype by default) to try to create a
-  useful string but sometimes turns out as [object]
+  useful string but sometimes turns out as [object object]
+
+  Polymorphism can be refered to as method overriding and 
+  overloading
 */
 Rabit.prototype.toString = function(){
   console.log(this)
   return `a ${this.type} rabbit`;
 };
 console.log(String(blueRabit));
+
+
+console.log(' ');
+// Symbol
+console.log('// Symbol');
+let sym = Symbol('name');
+console.log(sym === Symbol('name')); // false
+Rabit.prototype[sym] = 55;
+console.log(blueRabit[sym]);
+
+const toStringSymbol = Symbol('toString');
+Array.prototype[toStringSymbol] = function(){
+  return `${this.length} cm of blue yarn`;
+};
+console.log([1, 2].toString()); // 1,2
+console.log([1, 2][toStringSymbol]());
+
+
+let stringObject = {
+  [toStringSymbol](){
+    return 'a jute rope';
+  }
+};
+console.log(stringObject[toStringSymbol]());
+
+console.log(' ');
+// Symbol
+console.log('// The Iterator Interface');
+let okIterator = 'OK'[Symbol.iterator]();
+console.log(okIterator.next()); // {value: 'O', done: false}
+console.log(okIterator.next()); // {value: 'O', done: false}
+console.log(okIterator.next()); // {value: undefined, done: true}
+
+// custom iterable data structure
+class Matrix {
+  constructor(width, height, element = (x, y) => undefined){
+    this.width = width;
+    this.height = height;
+    this.content = [];
+
+    for(let y = 0; y < height; y++){
+      for(let x = 0; x < width; x++){
+        this.content[y * width + x] = element(x, y);
+      }
+    }
+  }
+  get(x, y){
+    return this.content[y * this.width + x];
+  }
+  set(x, y, value){
+    this.content[y * this.width + x] = value;
+  }
+}
