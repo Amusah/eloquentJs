@@ -2022,3 +2022,13 @@ class SymmetricMatrix extends Matrix{
 
 let matrix2 = new SymmetricMatrix(5, (x, y) => `${x}, ${y}`);
 console.log(matrix2.get(2, 3));
+
+// The Instanceof operator
+console.log('*********The instanceof operator*******');
+console.log(new SymmetricMatrix(2) instanceof SymmetricMatrix);
+console.log(new SymmetricMatrix(2) instanceof Matrix);
+console.log(new Matrix(2, 2) instanceof SymmetricMatrix);
+console.log([1] instanceof Array);
+console.log(1)
+setTimeout(function(){ console.log(2)}, 0)
+console.log(3)
