@@ -60,6 +60,7 @@ class VillageState{
 let first = new VillageState('Post Office', [{place: 'Post Office', address: 'Alice\'s House'}]);
 let next = first.move('Alice\'s House');
 
+console.log(first)
 console.log(next)
 console.log(next.place);
 console.log(next.parcels);
@@ -149,6 +150,7 @@ function findRoute(graph, from, to){
   }
 }
 
+// (VillageState, Array) -> {direction: string, memory: Array}
 function goalOrientedRobot({place, parcels}, route){
   if(route.length == 0) {
     let parcel = parcels[0];
